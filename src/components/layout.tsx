@@ -17,7 +17,7 @@ export interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<GatsbyTypes.SiteTitleQueryQuery>(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -29,7 +29,7 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header siteTitle={data.site?.siteMetadata?.title || `Title`} />
       <div
         style={{
           margin: `0 auto`,

@@ -1,17 +1,13 @@
 // If you don't want to use TypeScript you can delete this file!
-import React from "react";
+import * as React from "react";
 import { PageProps, Link, graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
-type DataProps = {
-  site: {
-    buildTime: string;
-  };
-};
-
-const UsingTypescript: React.FC<PageProps<DataProps>> = ({ data, path }) => (
+const UsingTypescript: React.FC<PageProps<
+  GatsbyTypes.UsingTypescriptQuery
+>> = ({ data, path }) => (
   <Layout>
     <SEO title="Using TypeScript" />
     <h1>Gatsby supports TypeScript by default!</h1>
@@ -26,7 +22,7 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({ data, path }) => (
     </p>
     <p>
       You're currently on the page "{path}" which was built on{" "}
-      {data.site.buildTime}.
+      {data.site?.buildTime}.
     </p>
     <p>
       To learn more, head over to our{" "}
@@ -42,7 +38,7 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({ data, path }) => (
 export default UsingTypescript;
 
 export const query = graphql`
-  {
+  query UsingTypescript {
     site {
       buildTime(formatString: "YYYY-MM-DD hh:mm a z")
     }

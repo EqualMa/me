@@ -29,6 +29,22 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-material-ui`,
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: "GH",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "ghall",
+        // Url to query from
+        url: "https://ghall.now.sh/api",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typegen`,
+      outputPath: `src/__generated__/gatsby-types.d.ts`,
+    },
   ],
 };
